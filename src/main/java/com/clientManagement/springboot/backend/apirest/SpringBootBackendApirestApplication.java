@@ -1,4 +1,4 @@
-package com.clientManagement.springboot.backend.apirest.springbootbackendapirest;
+package com.clientManagement.springboot.backend.apirest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
