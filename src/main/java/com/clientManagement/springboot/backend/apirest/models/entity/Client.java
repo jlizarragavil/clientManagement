@@ -24,8 +24,12 @@ public class Client implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
+	@Column(nullable=false)
 	private String name;
 	private String lastName;
+	
+	@Column(nullable=false, unique=true)
+	private String email;
 	
 	@Column(name="created_at")
 	@Temporal(TemporalType.DATE)
@@ -35,7 +39,7 @@ public class Client implements Serializable{
 	public void prePersist() {
 		createdAt = new Date();
 	}
-	private String email;
+	
 
 	public long getId() {
 		return id;
