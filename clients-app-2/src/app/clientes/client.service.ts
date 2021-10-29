@@ -18,6 +18,9 @@ export class ClientService {
     return this.http.post(this.urlEndpoint, cliente, {headers: this.httpHeaders}).pipe(
       map((response: any) => response.response as Cliente),
       catchError(e =>{
+        if(e.status==400){
+            return throwError(e);
+        }
         console.error(e.error.message);
         swal(e.error.message, e.error.error, "error");
         return throwError(e);
@@ -40,6 +43,9 @@ export class ClientService {
       return this.http.put(`${this.urlEndpoint}/${cliente.id}`, cliente,{headers: this.httpHeaders}).pipe(
         map((response: any) => response.client as Cliente),
         catchError(e =>{
+          if(e.status==400){
+              return throwError(e);
+          }
           console.error(e.error.message);
           swal(e.error.message, e.error.error, "error");
           return throwError(e);
