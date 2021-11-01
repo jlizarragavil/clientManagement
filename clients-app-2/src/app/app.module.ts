@@ -13,6 +13,11 @@ import { FormComponent } from './clientes/form.component';
 import { FormsModule } from '@angular/forms';
 import localeEnIe from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
+import { PaginatorComponent } from './paginator/paginator.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
+
 
 registerLocaleData(localeEnIe, "en-IE");
 
@@ -21,7 +26,9 @@ const routes: Routes = [
   {path:'directivas', component: DirectivaComponent},
   {path:'clientes', component: ClientesComponent},
   {path:'clientes/form', component: FormComponent},
-  {path:'clientes/form/:id', component: FormComponent}
+  {path:'clientes/form/:id', component: FormComponent},
+  {path:'clientes/page/:page', component: ClientesComponent}
+
 ];
 
 @NgModule({
@@ -31,13 +38,18 @@ const routes: Routes = [
     FooterComponent,
     DirectivaComponent,
     ClientesComponent,
-    FormComponent
+    FormComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatMomentDateModule
+
   ],
   providers: [ClientService],
   bootstrap: [AppComponent]
